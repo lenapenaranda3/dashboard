@@ -83,7 +83,7 @@ fig.add_trace(
         y=trade_df['Deficit'],
         mode='lines+markers',
         name='Trade Deficit (Imports - Exports)',
-        line=dict(color='black', width=2, dash='dash')
+        line=dict(color='white', width=2, dash='dash')
     )
 )
 
