@@ -5,41 +5,27 @@ import plotly.graph_objects as go
 # CSS styling for custom layout and element design
 st.markdown("""
 <style>
-[data-testid="block-container"] {
-    padding-left: 2rem;
-    padding-right: 2rem;
-    padding-top: 1rem;
-    padding-bottom: 0rem;
-    margin-bottom: -7rem;
+/* Main container styling */
+.css-1y0tads {  /* This class targets the main container */
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    padding-top: 1rem !important;
+    padding-bottom: 0rem !important;
+    margin-bottom: -7rem !important;
 }
 
-[data-testid="stVerticalBlock"] {
-    padding-left: 0rem;
-    padding-right: 0rem;
-}
-
-[data-testid="stMetric"] {
-    background-color: #393939;
+/* Metric block styling */
+.css-1aumxhk { /* This class targets the st.metric component */
+    background-color: #393939 !important;
     text-align: center;
-    padding: 15px 0;
+    padding: 15px 0 !important;
 }
 
-[data-testid="stMetricLabel"] {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-[data-testid="stMetricDeltaIcon-Up"] {
-    position: relative;
-    left: 38%;
-    transform: translateX(-50%);
-}
-
-[data-testid="stMetricDeltaIcon-Down"] {
-    position: relative;
-    left: 38%;
-    transform: translateX(-50%);
+/* Center metric labels */
+.css-1kyxreq { /* This targets the metric labels */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -73,44 +59,4 @@ fig.add_trace(
     go.Scatter(
         x=trade_df['year'],
         y=trade_df['Exports'],
-        mode='lines+markers',
-        name='Exports',
-        line=dict(color='red', width=2)
-    )
-)
-
-# Add trace for Imports
-fig.add_trace(
-    go.Scatter(
-        x=trade_df['year'],
-        y=trade_df['Imports'],
-        mode='lines+markers',
-        name='Imports',
-        line=dict(color='orange', width=2)
-    )
-)
-
-# Add trace for Deficit
-fig.add_trace(
-    go.Scatter(
-        x=trade_df['year'],
-        y=trade_df['Deficit'],
-        mode='lines+markers',
-        name='Trade Deficit (Exports - Imports)',
-        line=dict(color='yellow', width=2, dash='dash')
-    )
-)
-
-# Update layout for title and labels
-fig.update_layout(
-    title='U.S. Exports, Imports, and Trade Deficit Over the Years',
-    xaxis_title='Year',
-    yaxis_title='Trade Value',
-    template='plotly_dark'
-)
-
-# Display the line chart in Streamlit
-st.plotly_chart(fig)
-
-
-
+        mode='
