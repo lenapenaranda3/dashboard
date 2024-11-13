@@ -8,8 +8,8 @@ st.title("U.S. Trade Data Dashboard")
 st.subheader("Overview of Exports and Imports Over Time")
 
 # Load the data
-exports_df = pd.read_csv('exports_usa.csv')
-imports_df = pd.read_csv('imports_usa.csv')
+exports_df = pd.read_csv('exports_grouped.csv')
+imports_df = pd.read_csv('imports_grouped.csv')
 
 # Assuming both files have a 'Year' and 'Trade Value' or similar column names; adjust if needed
 # Merging data on the 'Year' column to create a combined DataFrame
