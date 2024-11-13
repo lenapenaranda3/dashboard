@@ -2,11 +2,9 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 
-#######################
-# CSS styling
+# CSS styling for custom layout and element design
 st.markdown("""
 <style>
-
 [data-testid="block-container"] {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -35,21 +33,16 @@ st.markdown("""
 [data-testid="stMetricDeltaIcon-Up"] {
     position: relative;
     left: 38%;
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
     transform: translateX(-50%);
 }
 
 [data-testid="stMetricDeltaIcon-Down"] {
     position: relative;
     left: 38%;
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
     transform: translateX(-50%);
 }
-
 </style>
-
+""", unsafe_allow_html=True)
 
 # Title and Description
 st.title("U.S. Trade Data Dashboard")
@@ -118,4 +111,6 @@ fig.update_layout(
 
 # Display the line chart in Streamlit
 st.plotly_chart(fig)
+
+
 
