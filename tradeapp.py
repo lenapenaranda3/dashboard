@@ -49,7 +49,7 @@ trade_df = exports_per_year.rename(columns={'value': 'Exports'}).merge(
 )
 
 # Calculate the trade deficit as Exports - Imports
-trade_df['Deficit'] = trade_df['Exports'] - trade_df['Imports']
+trade_df['Deficit'] = trade_df['Imports'] - trade_df['Exports']
 
 # Plotting with Plotly
 fig = go.Figure()
@@ -82,7 +82,7 @@ fig.add_trace(
         x=trade_df['year'],
         y=trade_df['Deficit'],
         mode='lines+markers',
-        name='Trade Deficit (Exports - Imports)',
+        name='Trade Deficit (Imports - Exports)',
         line=dict(color='black', width=2, dash='dash')
     )
 )
