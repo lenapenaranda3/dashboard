@@ -59,4 +59,41 @@ fig.add_trace(
     go.Scatter(
         x=trade_df['year'],
         y=trade_df['Exports'],
-        mode='
+        mode='lines+markers',
+        name='Exports',
+        line=dict(color='red', width=2)
+    )
+)
+
+# Add trace for Imports
+fig.add_trace(
+    go.Scatter(
+        x=trade_df['year'],
+        y=trade_df['Imports'],
+        mode='lines+markers',
+        name='Imports',
+        line=dict(color='orange', width=2)
+    )
+)
+
+# Add trace for Deficit
+fig.add_trace(
+    go.Scatter(
+        x=trade_df['year'],
+        y=trade_df['Deficit'],
+        mode='lines+markers',
+        name='Trade Deficit (Exports - Imports)',
+        line=dict(color='yellow', width=2, dash='dash')
+    )
+)
+
+# Update layout for title and labels
+fig.update_layout(
+    title='U.S. Exports, Imports, and Trade Deficit Over the Years',
+    xaxis_title='Year',
+    yaxis_title='Trade Value',
+    template='plotly_dark'
+)
+
+# Display the line chart in Streamlit
+st.plotly_chart(fig)
