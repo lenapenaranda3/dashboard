@@ -6,13 +6,16 @@ import plotly.graph_objects as go
 st.title("U.S. Trade Data Dashboard")
 st.subheader("Overview of Exports and Imports Over Time with Hot Colorscale")
 
-# Sample Data - Replace with your actual dataset or load it from a CSV file
-data = {
-    'Year': [2018, 2019, 2020, 2021, 2022],  # Replace with actual years
-    'Exports': [1500, 1600, 1550, 1650, 1700],  # Replace with actual export values
-    'Imports': [1800, 1750, 1700, 1850, 1900]  # Replace with actual import values
-}
-df = pd.DataFrame(data)
+# Load the data
+exports_df = pd.read_csv('/mnt/data/exports_usa.csv')
+imports_df = pd.read_csv('/mnt/data/imports_usa.csv')
+
+# Assuming both files have a 'Year' and 'Trade Value' or similar column names; adjust if needed
+# Merging data on the 'Year' column to create a combined DataFrame
+trade_df = exports_df[['Year', 'Trade Value']].rename(columns={'Trade Value': 'Exports'}).merge(
+    imports_df[['Year', 'Trade Value']].rename(columns={'Trade Value': 'Imports'}),
+    on='Year'
+)
 
 # Plotting with Plotly and applying "Hot" colorscale
 fig = go.Figure()
@@ -20,19 +23,19 @@ fig = go.Figure()
 # Add trace for Exports
 fig.add_trace(
     go.Scatter(
-        x=df['Year'],
-        y=df['Exports'],
+        x=trade_df['Year'],
+        y=trade_df['Exports'],
         mode='lines+markers',
         name='Exports',
-        line=dict(color='hot', width=2)
+        line=dict(color='red', width=2)
     )
 )
 
 # Add trace for Imports
 fig.add_trace(
     go.Scatter(
-        x=df['Year'],
-        y=df['Imports'],
+        x=trade_df['Year'],
+        y=trade_df['Imports'],
         mode='lines+markers',
         name='Imports',
         line=dict(color='orange', width=2)
@@ -49,3 +52,4 @@ fig.update_layout(
 
 # Display the line chart in Streamlit
 st.plotly_chart(fig)
+
