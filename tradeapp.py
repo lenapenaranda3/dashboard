@@ -8,8 +8,8 @@ st.title("U.S. Trade Data Dashboard")
 st.subheader("Overview of Exports and Imports Over Time with Hot Colorscale")
 
 # Load the data
-exports_df = pd.read_csv('/mnt/data/exports_usa.csv')
-imports_df = pd.read_csv('/mnt/data/imports_usa.csv')
+exports_df = pd.read_csv('/Users/lenapenaranda/Documents/COLUMBIA/Data Visualization/exports_usa.csv')
+imports_df = pd.read_csv('/Users/lenapenaranda/Documents/COLUMBIA/Data Visualization/imports_usa.csv')
 
 # Assuming both files have a 'Year' and 'Trade Value' or similar column names; adjust if needed
 # Merging data on the 'Year' column to create a combined DataFrame
